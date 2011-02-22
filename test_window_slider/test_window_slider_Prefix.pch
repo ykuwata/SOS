@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'test_window_slider' target in the 'test_window_slider' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
