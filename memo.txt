@@ -1,0 +1,129 @@
+/// @todo To-do list
+//   1. get sensor data and display
+//    1.1. accelerometer
+//    1.2. compass
+//    1.3. core location (cell tower - 1km, wifi - 100m, GPS - 10m) & display
+//    1.4. battery states (probably no need to display)
+//   2. start/stop timers and their callbacks
+//    2.1. log timer: t, accel, compass, GPS, battery, # of pictures taken
+//    2.2. picture timer: take pictures 
+//    2.3. text timer: send text messages 
+//      2.3.1. what happens if it's offline?)
+//      2.3.2. add GPS info to the message
+//      2.3.3. shrink image and add it to the text
+//   3. port the app to iPhone
+//   4. log replay on iPhone ould be nice
+
+// Power hog
+//  - Transmitting is the most expensive power consumption
+//  - GPS, WiFi, radio
+//  --> reduce the requested GPS accuracy when possible
+
+
+// Sensors --------------------------------------------
+// Make sure to turn off if not needed for battery reason
+
+//-----------------------------------------------------------------
+// In my application delegate class
+- (void)enableAccelerometerEvents
+{
+  // 1. Create UIAccelerometer
+  UIAccelerometer * theAccel = [UIAccelerometer sharedAccelerometer];
+
+  // 2. Configure
+  theAccel.updateInterval = 1.0/10;  // 10 Hz
+
+  // 3. Set the delegate (object to receive the acceleration event)
+  theAccel.delegate = self;  // this starts the event
+}
+
+- (void)accelerometer:(UIAccelerometer*)accelerometer
+	didAccelerate:(UIAcceleration*)acceleration
+{
+	// Get the event data
+	UIAccelerationValue ax, ay, az;
+	ax = acceleration.x;  // horizontal
+	ay = acceleration.y;  // vertical
+	az = acceleration.z;  // from front to back
+
+	/// @todo Process the data..
+	#define FILTERFACTOR (1.0)
+	if (1) { // LPF (simple)
+	value = (newAcceleration * FILTERFACTOR) +
+	        (previousValue * (1.0 - FILTERFACTOR);
+	previousValue = value;
+	}
+	else {	// HPF
+	value = newAcceleration - (newAcceleration * FILTERFACTOR) +
+	        (previousValue * (1.0 - FILTERFACTOR);
+	previousValue = value;
+	}
+
+	// display
+	currentRawReading = atan2(ay, ax);
+	float calibratedAngle = [self calibratedAngleFromAngle:currentRawReading];
+	[levelView updateToInclinationInRadians:calibratedAngle];
+}
+
+- (void)disableAccelerometerEvents
+{
+  UIAccelerometer* theAccel = [UIAccelerometer sharedAccelerometer];
+  theAccel.delegate = nil;
+}
+
+
+//-----------------------------------------------------------------
+// Location data (WiFi/cell tower to triangulate)
+//  --> lat, lon, with h&v accuracy
+//  --> attitude with accuracy 
+// time last known
+
+// In your delegate class
+{
+  // 1. create CLLocationManager object
+  CLLocationManager* locManager = [[CLLocationManager alloc] init];
+
+  // 2. Assign a delegate
+  locManager.delegate = self;
+
+  // 3. Configure
+
+  // 4. "startUpdatingLocation" until stopUpdatingLocation
+  [locManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager*)manager
+    didUpdateToLocation:(CLLocation*)newLocation
+           fromLocation:(CLLocation*)oldLocation;
+{
+  NSTimeInterval howRecent = 
+    [newLocation.timestamp timeIntervalSinceNow];
+  if (howRecnet < -10) return;
+
+  if (newLocation.horizontalAccuracy > 100) // in [m]
+    return;
+
+  // Use the coordinate data 
+  double lat = newLocation.coordinate.latitude;      // in [deg]
+  double lon = newLocation.coordinate.longitude;     // in [deg]
+  double altitude = newLocation.altutide;            // in [m]
+  double hAccuracy = newLocation.horizontalAccuracy; // in [m]
+  double vAccuracy = newLocation.verticalAccuracy;   // in [m]
+  NSString *timestamp = 
+     [newLocation.timestamp dateWithString]; // “2001-03-24 10:45:32 +0600”
+
+  double speed = newLocation.speed;            // in [m/s]
+  double course = newLocation.course;          // in [deg], N=0, clockwise
+}
+
+- (void)locationManager:(CLLocaitonManager*)manager
+       didFailWithError:(NSError*)error;
+// both tends to be very irregular --> use its own timer for fixed interval
+
+
+
+
+//-----------------------------------------------------------------
+// Power
+
+
