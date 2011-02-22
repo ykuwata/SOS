@@ -1,18 +1,24 @@
-/// @todo To-do list
-//   1. get sensor data and display
+/// @todo checklist
+// "*" means done. "-" means almost done. 
+//   0. Set up a build environment
+// *  0.1. set up iOS developer's account
+// *  0.2. install xcode on Mac OS
+// *  0.3. set up git repository
+//   1. Get sensor data and display
 //    1.1. accelerometer
 //    1.2. compass
 //    1.3. core location (cell tower - 1km, wifi - 100m, GPS - 10m) & display
 //    1.4. battery states (probably no need to display)
-//   2. start/stop timers and their callbacks
+//   2. Start/stop timers and their callbacks
 //    2.1. log timer: t, accel, compass, GPS, battery, # of pictures taken
 //    2.2. picture timer: take pictures 
 //    2.3. text timer: send text messages 
 //      2.3.1. what happens if it's offline?)
 //      2.3.2. add GPS info to the message
 //      2.3.3. shrink image and add it to the text
-//   3. port the app to iPhone
-//   4. log replay on iPhone ould be nice
+// - 3. Port the app to iPhone
+//   4. Log replay on iPhone would be nice
+
 
 // Power hog
 //  - Transmitting is the most expensive power consumption
