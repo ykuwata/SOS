@@ -13,7 +13,7 @@
 @interface test_sensorsAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     
-    GpsViewController *gpsViewController;
+    IBOutlet GpsViewController *gpsViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

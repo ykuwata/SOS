@@ -17,12 +17,18 @@
  	IBOutlet UILabel *height;
     IBOutlet UILabel *location;
 	IBOutlet UILabel *date;
-    IBOutlet UIActivityIndicatorView *activityIndicator;
+    //IBOutlet UIActivityIndicatorView *activityIndicator;
     
     // Get GPS info
     CLLocationManager  *locmanager;
     CLLocation *bestEffortAtLocation;
 }
+
+// Text labels
+@property (nonatomic,retain) IBOutlet UILabel *height;
+@property (nonatomic,retain) IBOutlet UILabel *location;
+@property (nonatomic,retain) IBOutlet UILabel *date;
+//@property (nonatomic,retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 // Methods
 #if 0

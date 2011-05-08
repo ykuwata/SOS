@@ -11,6 +11,13 @@
 
 @implementation GpsViewController
 
+// Text labels
+@synthesize height;
+@synthesize date;
+@synthesize location;
+//@synthesize activityIndicator;
+
+
 - (id)init
 {
     if (self = [super init])
