@@ -7,11 +7,14 @@
 //
 
 #import "test_sensorsAppDelegate.h"
+#import "GpsViewController.h"
+
 
 @implementation test_sensorsAppDelegate
 
 @synthesize window;
 
+@synthesize gpsViewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -76,6 +79,7 @@
 
 - (void)dealloc {
     [window release];
+    [gpsViewController release];  // @todo where is its alloc??
     [super dealloc];
 }
 

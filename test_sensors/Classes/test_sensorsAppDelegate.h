@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class GpsViewController;  // forward declaration
+
 @interface test_sensorsAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
+    
+    GpsViewController *gpsViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+
+@property (nonatomic, retain) IBOutlet GpsViewController *gpsViewController;
 
 @end
 
