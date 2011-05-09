@@ -15,6 +15,8 @@
 @synthesize window;
 
 @synthesize gpsViewController;
+@synthesize accelViewController;
+
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -80,6 +82,7 @@
 - (void)dealloc {
     [window release];
     [gpsViewController release];  // @todo where is its alloc??
+    [accelViewController release];  // @todo where is its alloc??
     [super dealloc];
 }
 

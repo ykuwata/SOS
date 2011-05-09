@@ -27,7 +27,10 @@
         NSLog(@"initting...");
 
         // Location manager
-        locmanager = [[CLLocationManager alloc] init];
+        locManager = [[CLLocationManager alloc] init];
+        locManager.delegate = self;
+        // @todo Configure
+        [locManager startUpdatingLocation];
         
         // Timer
         timer = [ NSTimer scheduledTimerWithTimeInterval: 1.0f
@@ -40,7 +43,8 @@
 }
 
 - (void)dealloc {
-    [locmanager release];
+    [locManager stopUpdatingLocation];
+    [locManager release];
     [super dealloc];
 }
 

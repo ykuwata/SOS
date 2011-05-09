@@ -12,7 +12,7 @@
 
 
 
-@interface GpsViewController : NSObject {
+@interface GpsViewController : NSObject <CLLocationManagerDelegate>{
     // View
  	IBOutlet UILabel *height;
     IBOutlet UILabel *location;
@@ -23,7 +23,7 @@
     NSTimer *timer;
     
     // Get GPS info
-    CLLocationManager  *locmanager;
+    CLLocationManager  *locManager;
     CLLocation *bestEffortAtLocation;
 }
 

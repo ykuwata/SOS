@@ -9,16 +9,20 @@
 #import <UIKit/UIKit.h>
 
 @class GpsViewController;  // forward declaration
+@class AccelViewController;  // forward declaration
 
 @interface test_sensorsAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     
     IBOutlet GpsViewController *gpsViewController;
+    IBOutlet AccelViewController *accelViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
+// @todo what's the point?
 @property (nonatomic, retain) IBOutlet GpsViewController *gpsViewController;
+@property (nonatomic, retain) IBOutlet AccelViewController *accelViewController;
 
 @end
 
