@@ -7,7 +7,10 @@
 //
 
 #import "test_sensorsAppDelegate.h"
+
 #import "GpsViewController.h"
+#import "AccelViewController.h"
+#import "CameraViewController.h"
 
 
 @implementation test_sensorsAppDelegate
@@ -16,6 +19,7 @@
 
 @synthesize gpsViewController;
 @synthesize accelViewController;
+@synthesize cameraViewController;
 
 
 #pragma mark -
@@ -24,6 +28,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
+    CameraViewController* view_controller = [[CameraViewController alloc] init];
+    self.cameraViewController = view_controller;
+    [view_controller release];
     
     [self.window makeKeyAndVisible];
     
