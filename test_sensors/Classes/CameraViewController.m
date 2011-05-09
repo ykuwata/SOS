@@ -42,6 +42,12 @@
                                                  repeats: YES ];
         NSLog(@"starting a timer");
         
+        // Switch -- @todo Does not work...
+        [switchTakePics setOn:YES animated:YES];
+        switchTakePics.enabled = YES;
+        NSLog(@"timer on = %d, enabled = %d", switchTakePics.on, switchTakePics.enabled);
+        
+        
         // other stuff
         count = 0;
         taking = FALSE;
@@ -59,17 +65,17 @@
 
 // take a picture
 - (void) takeOnePicture: (NSTimer *) theTimer {
+    
+    if (switchTakePics.on == NO) {
+        NSLog(@"timer not enabled");
+        return;
+    }
+    
     if (taking) {
         NSLog(@"still taking a pic...");
         return;
     }
-#if 0 // yoshi debuggging 
-    if (switchTimer.on == NO) {
-        NSLog(@"timer not enabled");
-        return;
-    }
-#endif
-        
+  
     // Ready to take
     NSLog(@"pic request!");
     [picker takePicture];
@@ -86,6 +92,7 @@
 - (void) imagePickerController:(UIImagePickerController *)picker 
  didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    // @todo: does not get this callback...
     NSLog(@"done");
     
     taking = FALSE;

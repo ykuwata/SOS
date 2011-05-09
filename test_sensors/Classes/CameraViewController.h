@@ -17,7 +17,7 @@
     //IBOutlet UIImageView* m_image_view;
     
     IBOutlet UILabel *labelCount;
-    //IBOutlet UISwitch *switchTimer;
+    IBOutlet UISwitch *switchTakePics;
     
     // Timer
     NSTimer *timer;
