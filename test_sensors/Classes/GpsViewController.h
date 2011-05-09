@@ -14,10 +14,19 @@
 
 @interface GpsViewController : NSObject <CLLocationManagerDelegate>{
     // View
- 	IBOutlet UILabel *height;
-    IBOutlet UILabel *location;
-	IBOutlet UILabel *date;
+    IBOutlet UILabel *labelLocation;
+ 	IBOutlet UILabel *labelAltitude;
+    IBOutlet UILabel *labelAccuracy;
+    IBOutlet UILabel *labelVelocity;    
+	IBOutlet UILabel *labelDate;
+	IBOutlet UILabel *labelRecent;
+    IBOutlet UILabel *labelSuccessCount;
+    IBOutlet UILabel *labelFailCount;
     //IBOutlet UIActivityIndicatorView *activityIndicator;
+    
+    // Counter
+    int successCount;
+    int failCount;
     
     // Timer
     NSTimer *timer;
@@ -27,11 +36,13 @@
     CLLocation *bestEffortAtLocation;
 }
 
+#if 0 // needed??
 // Text labels
-@property (nonatomic,retain) IBOutlet UILabel *height;
-@property (nonatomic,retain) IBOutlet UILabel *location;
-@property (nonatomic,retain) IBOutlet UILabel *date;
+@property (nonatomic,retain) IBOutlet UILabel *labelHeight;
+@property (nonatomic,retain) IBOutlet UILabel *labelLocation;
+@property (nonatomic,retain) IBOutlet UILabel *labelDate;
 //@property (nonatomic,retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+#endif
 
 
 // Methods

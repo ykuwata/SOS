@@ -66,7 +66,7 @@
 #endif                                                                                                                                  
     
     // display
-    labelAccel.text = [NSString stringWithFormat: @"(%.3f, %.3f, %.3f)", ax, ay, az];
+    labelAccel.text = [NSString stringWithFormat: @"(% .3f, % .3f, % .3f)", ax, ay, az];
     labelCount.text = [NSString stringWithFormat: @"%d", count++];
 }
 
