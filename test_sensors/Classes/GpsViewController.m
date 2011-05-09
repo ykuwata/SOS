@@ -8,6 +8,8 @@
 
 #import "GpsViewController.h"
 
+#define NSLog(s,...) NSLog(@"%s:%d %@",__PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:(s), ##__VA_ARGS__])
+
 
 @implementation GpsViewController
 
@@ -20,10 +22,11 @@
 
 - (id)init
 {
+    NSLog(@"I'm here");
     if (self = [super init])
     {
         locmanager = [[CLLocationManager alloc] init];
-        
+        self.height.text = @"Loading...";
     }
     return self;
 }
@@ -32,7 +35,6 @@
     [locmanager release];
     [super dealloc];
 }
-
 
 
 @end

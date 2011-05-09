@@ -30,6 +30,7 @@
 @property (nonatomic,retain) IBOutlet UILabel *date;
 //@property (nonatomic,retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+
 // Methods
 #if 0
 - (void)locationManager:(CLLocationManager *)manager 
