@@ -38,7 +38,7 @@
         successCount = 0;
         
         // Timer
-        timer = [ NSTimer scheduledTimerWithTimeInterval: 5.0f
+        timer = [ NSTimer scheduledTimerWithTimeInterval: 1.0f
                                                   target: self 
                                                 selector: @selector( updateGps: )
                                                 userInfo: nil 
@@ -61,13 +61,13 @@
     
     // Update rate
     NSTimeInterval howRecent = [loc.timestamp timeIntervalSinceNow];
-    labelRecent.text = [NSString stringWithFormat: @"%.1f secs ago", -howRecent];
+    labelRecent.text = [NSString stringWithFormat: @"%.1f sec ago", -howRecent];
     
     if (nil) {
-        labelFailCount.text = [NSString stringWithFormat: @"%d", failCount++];
+        labelFailCount.text = [NSString stringWithFormat: @"%d", ++failCount];
         return;
     }    
-    labelSuccessCount.text = [NSString stringWithFormat: @"%d", successCount++];
+    labelSuccessCount.text = [NSString stringWithFormat: @"%d", ++successCount];
     
     
     // Process data
