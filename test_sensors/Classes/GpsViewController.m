@@ -22,11 +22,19 @@
 
 - (id)init
 {
-    NSLog(@"I'm here");
-    if (self = [super init])
+    if (self = [super init])  // init with superclass
     {
+        NSLog(@"initting...");
+
+        // Location manager
         locmanager = [[CLLocationManager alloc] init];
-        self.height.text = @"Loading...";
+        
+        // Timer
+        timer = [ NSTimer scheduledTimerWithTimeInterval: 1.0f
+                                                  target: self 
+                                                selector: @selector( updateGps: )
+                                                userInfo: nil 
+                                                 repeats: YES ];
     }
     return self;
 }
@@ -36,5 +44,11 @@
     [super dealloc];
 }
 
+
+- (void) updateGps: (NSTimer *) theTimer {
+    static int count = 0;
+    height.text = [NSString stringWithFormat: @"%d",
+                   count++];
+}
 
 @end

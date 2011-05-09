@@ -19,6 +19,9 @@
 	IBOutlet UILabel *date;
     //IBOutlet UIActivityIndicatorView *activityIndicator;
     
+    // Timer
+    NSTimer *timer;
+    
     // Get GPS info
     CLLocationManager  *locmanager;
     CLLocation *bestEffortAtLocation;
