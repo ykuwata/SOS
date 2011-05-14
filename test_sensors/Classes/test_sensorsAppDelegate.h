@@ -13,25 +13,35 @@
 @class AccelViewController;
 @class CameraViewController;
 @class Logger;
+@class DeepSleepPreventer;
 
 @interface test_sensorsAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     
+    /// GPS
     IBOutlet GpsViewController *gpsViewController;
+    
+    /// Accelerometer
     IBOutlet AccelViewController *accelViewController;
+    
+    /// Camera (work in progress)
     IBOutlet CameraViewController *cameraViewController;
     
+    /// Logger
     Logger *logger;
+    
+    /// Keep the app running in background
+    DeepSleepPreventer *deepSleepPreventer;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
-// @todo what's the point?
 @property (nonatomic, retain) IBOutlet GpsViewController *gpsViewController;
 @property (nonatomic, retain) IBOutlet AccelViewController *accelViewController;
 @property (nonatomic, retain) IBOutlet CameraViewController *cameraViewController;
 
 @property (nonatomic, retain) Logger *logger;
+@property (nonatomic, retain) DeepSleepPreventer *deepSleepPreventer;
 
 @end
 

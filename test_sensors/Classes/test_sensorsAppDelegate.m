@@ -12,6 +12,8 @@
 #import "AccelViewController.h"
 #import "CameraViewController.h"
 #import "Logger.h"
+#import "DeepSleepPreventer.h"
+
 
 @implementation test_sensorsAppDelegate
 
@@ -21,6 +23,7 @@
 @synthesize accelViewController;
 @synthesize cameraViewController;
 @synthesize logger;
+@synthesize deepSleepPreventer;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -31,6 +34,10 @@
     
     // Set up logger
     self.logger = [[Logger alloc] init];
+    
+    // Set up sleep preventer
+    self.deepSleepPreventer = [[DeepSleepPreventer alloc] init];
+	[self.deepSleepPreventer startPreventSleep];
     
     // Set up camera
     CameraViewController* view_controller = [[CameraViewController alloc] init];
@@ -96,8 +103,7 @@
 
 
 - (void)dealloc {
-    [window release];
-
+    [deepSleepPreventer release];
     [logger release];
     
     // Listed in xib file
@@ -105,6 +111,8 @@
     [gpsViewController release];
     [accelViewController release];
     
+    [window release];
+
     [super dealloc];
 }
 
