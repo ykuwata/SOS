@@ -24,7 +24,9 @@
 #ifdef USE_FPRINTF
         fp = NULL;
 #endif
-        [self open];
+        int ret = [self open];
+        if (ret != 0)
+            abort();
     }
     return self;
 }
@@ -39,7 +41,7 @@
 
 
 
-- (void)open {
+- (int)open {
     
     // Application Document directory
     NSArray *paths = 
@@ -50,8 +52,8 @@
     NSDate *now = [NSDate date];   // current time
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd-EEE-HH-mm-ss"];
-    NSString *fname = [formatter stringFromDate:now];
-    NSString *fullname = [NSString stringWithFormat:@"%@/%@.dat", documentsDirectory, fname];
+    NSString *fname = [NSString stringWithFormat:@"%@.dat", [formatter stringFromDate:now]];
+    NSString *fullname = [NSString stringWithFormat:@"%@/%@", documentsDirectory, fname];
     
     NSLog(@"log file: %@", fullname);
     
@@ -60,28 +62,61 @@
     fp = fopen([fullname UTF8String],"w");
     if (fp == NULL) {
         NSLog(@"Failed to open the file");
-        return;
+        return -1;
     }
 #else
     // Create a file by writing something...
     NSError *error = noErr;
-    BOOL success = [@"Log file\n" writeToFile:fullname
-                                   atomically:YES 
-                                     encoding:NSUTF8StringEncoding 
-                                        error:&error];
+    NSString *header = @"Log file -- \n";
+    BOOL success = [header writeToFile:fullname
+                            atomically:YES 
+                              encoding:NSUTF8StringEncoding 
+                                 error:&error];
     if (!success) {
         // handle the error
         NSLog(@"Error %@", error);
+        return -1;
     }
     
     // get a handle to the file
     fileHandle = [NSFileHandle fileHandleForWritingAtPath:fullname];
-    if (fileHandle == nil) 
+    if (fileHandle == nil) {
         NSLog(@"file does not exist!");
-
+        return -1;
+    }
+    
     // move to the end of the file -- not needed for a new file
     [fileHandle seekToEndOfFile];
 #endif
+    
+    // Renew the symbolic link
+    if (1) {
+        NSFileManager *fm = [NSFileManager defaultManager];
+        [fm changeCurrentDirectoryPath:[documentsDirectory stringByExpandingTildeInPath]];
+        
+        // remove the symbolic link
+        NSError *error = noErr;
+        success = [fm removeItemAtPath:@"latest"
+                                 error:&error];
+        if (success)
+            NSLog(@"removed 'latest'");
+        else {
+            NSLog(@"Failed to remove! %@", error);
+            return -1;
+        }
+        
+        // create a new link
+        error = noErr;
+        success = [fm createSymbolicLinkAtPath:@"latest" 
+                           withDestinationPath:fname
+                                         error:&error];
+        if (success)
+            NSLog(@"created symlink 'latest'");
+        else {
+            NSLog(@"Symlink failed... %@", error);
+            return -1;
+        }
+    }
     bytesWritten = 0;
     
     if (0){ // testing
@@ -90,6 +125,8 @@
         [self write:@"bar\n"];
         [self write:@"aiueo\n"];
     }
+    
+    return 0;
 }
 
 
@@ -106,8 +143,9 @@
     // write the data to the end of the file
     [fileHandle writeData:textData];
     // @todo handle exception
-    NSLog(@"written data");
 #endif
+    
+    count++;
 }
 
 

@@ -27,7 +27,7 @@
 
 
 
-- (void) open;
+- (int) open;
 - (void) close;
 - (void) write: (NSString *)message;
 
