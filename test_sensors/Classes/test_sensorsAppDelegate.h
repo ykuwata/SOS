@@ -12,6 +12,7 @@
 @class GpsViewController;
 @class AccelViewController;
 @class CameraViewController;
+@class LogViewController;
 @class Logger;
 @class DeepSleepPreventer;
 
@@ -27,6 +28,9 @@
     /// Camera (work in progress)
     IBOutlet CameraViewController *cameraViewController;
     
+    /// Log On/Off
+    IBOutlet LogViewController *logViewController;
+        
     /// Logger
     Logger *logger;
     
@@ -39,6 +43,7 @@
 @property (nonatomic, retain) IBOutlet GpsViewController *gpsViewController;
 @property (nonatomic, retain) IBOutlet AccelViewController *accelViewController;
 @property (nonatomic, retain) IBOutlet CameraViewController *cameraViewController;
+@property (nonatomic, retain) IBOutlet LogViewController *logViewController;
 
 @property (nonatomic, retain) Logger *logger;
 @property (nonatomic, retain) DeepSleepPreventer *deepSleepPreventer;

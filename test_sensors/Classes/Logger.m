@@ -24,9 +24,6 @@
 #ifdef USE_FPRINTF
         fp = NULL;
 #endif
-        int ret = [self open];
-        if (ret != 0)
-            abort();
     }
     return self;
 }
@@ -84,6 +81,7 @@
         NSLog(@"file does not exist!");
         return -1;
     }
+    [fileHandle retain];   // fileHandle gets auto-released without this...
     
     // move to the end of the file -- not needed for a new file
     [fileHandle seekToEndOfFile];
@@ -100,10 +98,6 @@
                                  error:&error];
         if (success)
             NSLog(@"removed 'latest'");
-        else {
-            NSLog(@"Failed to remove! %@", error);
-            return -1;
-        }
         
         // create a new link
         error = noErr;
@@ -158,7 +152,7 @@
 #else
     if (fileHandle)
         [fileHandle closeFile];
-#endif    
+#endif
 }
 
 @end

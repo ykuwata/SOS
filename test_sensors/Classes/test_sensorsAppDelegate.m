@@ -11,6 +11,7 @@
 #import "GpsViewController.h"
 #import "AccelViewController.h"
 #import "CameraViewController.h"
+#import "LogViewController.h"
 #import "Logger.h"
 #import "DeepSleepPreventer.h"
 
@@ -31,9 +32,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
-    
-    // Set up logger
-    self.logger = [[Logger alloc] init];
     
     // Set up sleep preventer
     self.deepSleepPreventer = [[DeepSleepPreventer alloc] init];
@@ -104,7 +102,6 @@
 
 - (void)dealloc {
     [deepSleepPreventer release];
-    [logger release];
     
     // Listed in xib file
     // @todo should we dealloc?
