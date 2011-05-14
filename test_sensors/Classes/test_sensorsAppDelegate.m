@@ -11,7 +11,7 @@
 #import "GpsViewController.h"
 #import "AccelViewController.h"
 #import "CameraViewController.h"
-
+#import "Logger.h"
 
 @implementation test_sensorsAppDelegate
 
@@ -20,7 +20,7 @@
 @synthesize gpsViewController;
 @synthesize accelViewController;
 @synthesize cameraViewController;
-
+@synthesize logger;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -28,10 +28,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
+    
+    // Set up logger
+    self.logger = [[Logger alloc] init];
+    
+    // Set up camera
     CameraViewController* view_controller = [[CameraViewController alloc] init];
     self.cameraViewController = view_controller;
     [view_controller release];
     
+#if 0    
+    UIView* controllers_view = [self.view_controller view];
+    [self.window addSubview:controllers_view];
+#endif
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -88,8 +97,14 @@
 
 - (void)dealloc {
     [window release];
-    [gpsViewController release];  // @todo where is its alloc??
-    [accelViewController release];  // @todo where is its alloc??
+
+    [logger release];
+    
+    // Listed in xib file
+    // @todo should we dealloc?
+    [gpsViewController release];
+    [accelViewController release];
+    
     [super dealloc];
 }
 

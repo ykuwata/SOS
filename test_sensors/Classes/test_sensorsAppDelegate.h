@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class GpsViewController;  // forward declaration
-@class AccelViewController;  // forward declaration
-@class CameraViewController;  // forward declaration
+// forward declaration
+@class GpsViewController;
+@class AccelViewController;
+@class CameraViewController;
+@class Logger;
 
 @interface test_sensorsAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
@@ -18,6 +20,8 @@
     IBOutlet GpsViewController *gpsViewController;
     IBOutlet AccelViewController *accelViewController;
     IBOutlet CameraViewController *cameraViewController;
+    
+    Logger *logger;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -26,6 +30,8 @@
 @property (nonatomic, retain) IBOutlet GpsViewController *gpsViewController;
 @property (nonatomic, retain) IBOutlet AccelViewController *accelViewController;
 @property (nonatomic, retain) IBOutlet CameraViewController *cameraViewController;
+
+@property (nonatomic, retain) Logger *logger;
 
 @end
 
