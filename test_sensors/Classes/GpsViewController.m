@@ -69,6 +69,9 @@
     }    
     labelSuccessCount.text = [NSString stringWithFormat: @"%d", ++successCount];
     
+    // Setting date format    
+    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss Z"];
     
     // Process data
     double lat = loc.coordinate.latitude;      // in [deg]
@@ -76,8 +79,7 @@
     double altitude = loc.altitude;            // in [m]
     double hAccuracy = loc.horizontalAccuracy; // in [m]
     double vAccuracy = loc.verticalAccuracy;   // in [m]
-    NSString *timestamp = [loc.timestamp description]; // “2001-03-24 10:45:32 +0600”
-                                       //descriptionWithLocale:[NSLocale currentLocale]];
+    NSString *timestamp =  [dateFormatter stringFromDate:loc.timestamp]; // “2001-03-24 10:45:32 +0700”
     double speed = loc.speed;            // in [m/s]
     double course = loc.course;          // in [deg], N=0, clockwise    
     
@@ -103,6 +105,7 @@
     didUpdateToLocation:(CLLocation *)loc 
            fromLocation:(CLLocation *)oldLocation 
 { 
+    
     NSLog(@"newLoc: %@", loc.description);
     
     NSTimeInterval howRecent = 
@@ -118,9 +121,7 @@
     double altitude = loc.altutide;            // in [m]
     double hAccuracy = loc.horizontalAccuracy; // in [m]
     double vAccuracy = loc.verticalAccuracy;   // in [m]
-    NSString *timestamp = 
-    [loc.timestamp dateWithString]; // “2001-03-24 10:45:32 +0600”
-    
+    NSString *timestamp = [loc.timestamp dateWithString]; // “2001-03-24 10:45:32 +0600”
     double speed = loc.speed;            // in [m/s]
     double course = loc.course;          // in [deg], N=0, clockwise    
 }
