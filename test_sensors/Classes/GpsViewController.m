@@ -7,19 +7,16 @@
 //
 
 #import "GpsViewController.h"
+#import "Logger.h"
 
 #define NSLog(s,...) NSLog(@"%s:%d %@",__PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:(s), ##__VA_ARGS__])
 
 
 @implementation GpsViewController
 
-#if 0
-// Text labels
-@synthesize height;
-@synthesize date;
-@synthesize location;
-//@synthesize activityIndicator;
-#endif
+
+@synthesize logger;
+
 
 - (id)init
 {
@@ -43,11 +40,14 @@
                                                 selector: @selector( updateGps: )
                                                 userInfo: nil 
                                                  repeats: YES ];
+        // Logger
+        logger = [[Logger alloc] initWithName:@"GPS"];
     }
     return self;
 }
 
 - (void)dealloc {
+    [logger release];
     [locManager stopUpdatingLocation];
     [locManager release];
     [super dealloc];
@@ -87,6 +87,12 @@
     labelAccuracy.text = [NSString stringWithFormat: @"H %.1f, V %.1f", hAccuracy, vAccuracy];
     labelVelocity.text = [NSString stringWithFormat: @"%.1fm/s, %.1fdeg", speed, course];
     labelDate.text = timestamp;
+    
+    // Log
+    if (logger.fileOpen) {
+        [logger write:[NSString stringWithFormat:@"%@,%f,%f,%.2f,%.1f,%.1f,%.1f,%.1f\n", 
+                       timestamp, lat, lon, altitude, hAccuracy, vAccuracy, speed, course]];
+    }
 }
 
 

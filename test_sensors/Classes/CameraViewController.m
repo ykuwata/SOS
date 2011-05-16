@@ -12,7 +12,6 @@
 #define NSLog(s,...) NSLog(@"%s:%d %@",__PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:(s), ##__VA_ARGS__])
 
 
-
 @implementation CameraViewController
 
 - (id)init
@@ -86,6 +85,14 @@
                                 usingDelegate:self 
                                    sourceType:UIImagePickerControllerSourceTypeCamera];
 #endif
+}
+
+
+- (void) viewDidLoad {
+    // Switch -- @todo Does not work... i guess i don't understand how they are supposed to wrok...
+    [switchTakePics setOn:YES animated:YES];
+    switchTakePics.enabled = YES;
+    NSLog(@"timer on = %d, enabled = %d", switchTakePics.on, switchTakePics.enabled);
 }
 
 

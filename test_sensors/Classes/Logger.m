@@ -14,13 +14,18 @@
 
 @implementation Logger
 
+@synthesize fileOpen;
+@synthesize name;
 
-- (id)init
+- (id)initWithName:(NSString*)nameIn
 {
     if (self = [super init])  // init with superclass
     {
         NSLog(@"initting...");
         count = 0;
+        fileOpen = FALSE;
+        self.name = nameIn;
+        [self.name retain]; //@todo needed?
 #ifdef USE_FPRINTF
         fp = NULL;
 #endif
@@ -30,6 +35,7 @@
 
 
 - (void)dealloc {
+    [self.name release];
     [self close];
     
     // Clean up
@@ -49,7 +55,8 @@
     NSDate *now = [NSDate date];   // current time
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd-EEE-HH-mm-ss"];
-    NSString *fname = [NSString stringWithFormat:@"%@.dat", [formatter stringFromDate:now]];
+    NSString *fname = [NSString stringWithFormat:@"%@_%@.dat", 
+                       [formatter stringFromDate:now], self.name];
     NSString *fullname = [NSString stringWithFormat:@"%@/%@", documentsDirectory, fname];
     
     NSLog(@"log file: %@", fullname);
@@ -94,23 +101,25 @@
         
         // remove the symbolic link
         NSError *error = noErr;
-        success = [fm removeItemAtPath:@"latest"
+        NSString *latest = [NSString stringWithFormat:@"latest_%@", name]; 
+        success = [fm removeItemAtPath:latest
                                  error:&error];
         if (success)
-            NSLog(@"removed 'latest'");
+            NSLog(@"removed 'latest_%@'", name);
         
         // create a new link
         error = noErr;
-        success = [fm createSymbolicLinkAtPath:@"latest" 
+        success = [fm createSymbolicLinkAtPath:latest 
                            withDestinationPath:fname
                                          error:&error];
         if (success)
-            NSLog(@"created symlink 'latest'");
+            NSLog(@"created symlink 'latest_%@'", name);
         else {
             NSLog(@"Symlink failed... %@", error);
             return -1;
         }
     }
+    fileOpen = TRUE;
     bytesWritten = 0;
     
     if (0){ // testing
@@ -125,6 +134,8 @@
 
 
 - (void) write:(NSString *)message {
+    assert (fileOpen);
+    
 #ifdef USE_FPRINTF
     assert(fp);
     // Crude way of writing
@@ -150,9 +161,13 @@
         NSLog(@"wrote %d bytes", bytesWritten);        
     }    
 #else
-    if (fileHandle)
+    if (fileHandle) {
         [fileHandle closeFile];
+        [fileHandle release];
+    }
 #endif
+    
+    fileOpen = FALSE;
 }
 
 @end

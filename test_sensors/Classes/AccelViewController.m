@@ -7,12 +7,16 @@
 //
 
 #import "AccelViewController.h"
-
+#import "Logger.h"
 
 #define NSLog(s,...) NSLog(@"%s:%d %@",__PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:(s), ##__VA_ARGS__])
 
 
 @implementation AccelViewController
+
+
+@synthesize logger;
+
 
 - (id)init
 {
@@ -29,12 +33,16 @@
         
         // 3. Set the delegate (object to receive the acceleration event)
         theAccel.delegate = self;  // this starts the event
+
+        // Logger
+        logger = [[Logger alloc] initWithName:@"Accel"];
     }
     return self;
 }
 
 - (void)dealloc {
     // Clean up
+    [logger release];
     UIAccelerometer* theAccel = [UIAccelerometer sharedAccelerometer];
     theAccel.delegate = nil;
 
@@ -68,6 +76,12 @@
     // display
     labelAccel.text = [NSString stringWithFormat: @"(% .3f, % .3f, % .3f)", ax, ay, az];
     labelCount.text = [NSString stringWithFormat: @"%d", count++];
+    
+    // Log
+    if (logger.fileOpen) {
+        // @todo Record time
+        [logger write:[NSString stringWithFormat: @"(% .3f, % .3f, % .3f)\n", ax, ay, az]];        
+    }
 }
 
 @end

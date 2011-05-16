@@ -31,9 +31,6 @@
     /// Log On/Off
     IBOutlet LogViewController *logViewController;
         
-    /// Logger
-    Logger *logger;
-    
     /// Keep the app running in background
     DeepSleepPreventer *deepSleepPreventer;
 }
@@ -44,8 +41,6 @@
 @property (nonatomic, retain) IBOutlet AccelViewController *accelViewController;
 @property (nonatomic, retain) IBOutlet CameraViewController *cameraViewController;
 @property (nonatomic, retain) IBOutlet LogViewController *logViewController;
-
-@property (nonatomic, retain) Logger *logger;
 @property (nonatomic, retain) DeepSleepPreventer *deepSleepPreventer;
 
 @end

@@ -25,8 +25,10 @@
     int bytesWritten;
 }
 
+@property (nonatomic) BOOL fileOpen;
+@property (nonatomic,retain) NSString* name;
 
-
+- (id)initWithName:(NSString*)name;
 - (int) open;
 - (void) close;
 - (void) write: (NSString *)message;

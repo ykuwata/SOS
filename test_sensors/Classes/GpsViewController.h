@@ -10,7 +10,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-
+@class Logger;
 
 @interface GpsViewController : NSObject <CLLocationManagerDelegate>{
     // View
@@ -36,13 +36,9 @@
     CLLocation *bestEffortAtLocation;
 }
 
-#if 0 // needed??
-// Text labels
-@property (nonatomic,retain) IBOutlet UILabel *labelHeight;
-@property (nonatomic,retain) IBOutlet UILabel *labelLocation;
-@property (nonatomic,retain) IBOutlet UILabel *labelDate;
-//@property (nonatomic,retain) IBOutlet UIActivityIndicatorView *activityIndicator;
-#endif
+
+
+@property (nonatomic,retain) Logger *logger;
 
 
 // Methods

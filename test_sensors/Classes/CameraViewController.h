@@ -14,7 +14,7 @@
 {
     UIImagePickerController *picker;
     
-    //IBOutlet UIImageView* m_image_view;
+    //IBOutlet UIImageView* imageView; // not sure why we need this...
     
     IBOutlet UILabel *labelCount;
     IBOutlet UISwitch *switchTakePics;

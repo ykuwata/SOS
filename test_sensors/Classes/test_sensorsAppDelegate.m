@@ -16,6 +16,9 @@
 #import "DeepSleepPreventer.h"
 
 
+#define NSLog(s,...) NSLog(@"%s:%d %@",__PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:(s), ##__VA_ARGS__])
+
+
 @implementation test_sensorsAppDelegate
 
 @synthesize window;
@@ -23,7 +26,7 @@
 @synthesize gpsViewController;
 @synthesize accelViewController;
 @synthesize cameraViewController;
-@synthesize logger;
+@synthesize logViewController;
 @synthesize deepSleepPreventer;
 
 #pragma mark -
@@ -41,6 +44,13 @@
     CameraViewController* view_controller = [[CameraViewController alloc] init];
     self.cameraViewController = view_controller;
     [view_controller release];
+    
+    // Pass the individual logger to logViewController
+    assert (self.logViewController);
+    assert (self.gpsViewController.logger);
+    assert (self.accelViewController.logger);
+    logViewController.loggerGps = gpsViewController.logger;
+    logViewController.loggerAccel = accelViewController.logger;
     
 #if 0    
     UIView* controllers_view = [self.view_controller view];
@@ -107,6 +117,7 @@
     // @todo should we dealloc?
     [gpsViewController release];
     [accelViewController release];
+    [logViewController release];
     
     [window release];
 

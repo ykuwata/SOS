@@ -1,5 +1,5 @@
 /// @todo checklist
-// "*" means done. "-" means almost done. 
+// "*" means done. "-" means almost done. "x" means not doable
 //   0. Set up a build environment
 // *  0.1. set up iOS developer's account
 // *  0.2. install xcode on Mac OS
@@ -11,7 +11,7 @@
 //   2. Start/stop timers and their callbacks
 //    2.1. log timer: t, accel, compass, GPS, battery, # of pictures taken
 //    2.2. picture timer: take pictures 
-//    2.3. text timer: send text messages 
+// x  2.3. text timer: send text messages 
 //      2.3.1. what happens if it's offline?)
 //      2.3.2. add GPS info to the message
 //      2.3.3. shrink image and add it to the text

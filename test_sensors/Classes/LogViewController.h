@@ -17,12 +17,14 @@
  	IBOutlet UISwitch *switchLogging;    
     IBOutlet UILabel *label;
     
-    // Link
-    Logger *logger;
+    // logger
+    Logger *loggerGps;
+    Logger *loggerAccel;
 }
 
 
-@property (nonatomic,retain) Logger *logger;
+@property (nonatomic,retain) Logger *loggerGps;
+@property (nonatomic,retain) Logger *loggerAccel;
 - (IBAction)switchChanged:(id)sender;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class Logger;
 
 @interface AccelViewController : NSObject <UIAccelerometerDelegate>{
     // View
@@ -17,5 +18,7 @@
     // Counter
     int count;
 }
+
+@property (nonatomic,retain) Logger *logger;
 
 @end
