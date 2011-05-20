@@ -79,8 +79,9 @@
     
     // Log
     if (logger.fileOpen) {
-        // @todo Record time
-        [logger write:[NSString stringWithFormat: @"(% .3f, % .3f, % .3f)\n", ax, ay, az]];        
+        double t = [[NSDate date] timeIntervalSinceReferenceDate]; 
+        [logger write:[NSString stringWithFormat: @"%.3f, (% .3f,% .3f,% .3f)\n", 
+                       t, ax, ay, az]];        
     }
 }
 

@@ -92,8 +92,10 @@
     
     // Log
     if (logger.fileOpen) {
-        [logger write:[NSString stringWithFormat:@"%@,%f,%f,%.2f,%.1f,%.1f,%.1f,%.1f\n", 
-                       timestamp, lat, lon, altitude, hAccuracy, vAccuracy, speed, course]];
+        NSDate *t = loc.timestamp;
+        [logger write:[NSString stringWithFormat:@"%.3f,%f,%f,%.2f,%.1f,%.1f,%.1f,%.1f\n", 
+                       [t timeIntervalSinceReferenceDate], 
+                       lat, lon, altitude, hAccuracy, vAccuracy, speed, course]];
     }
 }
 

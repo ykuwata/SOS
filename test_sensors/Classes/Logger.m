@@ -71,7 +71,7 @@
 #else
     // Create a file by writing something...
     NSError *error = noErr;
-    NSString *header = @"Log file -- \n";
+    NSString *header = [NSString stringWithFormat:@"Log file: %@\n", fname];
     BOOL success = [header writeToFile:fullname
                             atomically:YES 
                               encoding:NSUTF8StringEncoding 
