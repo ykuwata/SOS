@@ -13,7 +13,7 @@
 #import "CameraViewController.h"
 #import "LogViewController.h"
 #import "Logger.h"
-#import "DeepSleepPreventer.h"
+#import "MMPDeepSleepPreventer.h"
 
 
 #define NSLog(s,...) NSLog(@"%s:%d %@",__PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:(s), ##__VA_ARGS__])
@@ -37,7 +37,7 @@
     // Override point for customization after application launch.
     
     // Set up sleep preventer
-    self.deepSleepPreventer = [[DeepSleepPreventer alloc] init];
+    self.deepSleepPreventer = [[[MMPDeepSleepPreventer alloc] init] autorelease];
 	[self.deepSleepPreventer startPreventSleep];
     
     // Set up camera

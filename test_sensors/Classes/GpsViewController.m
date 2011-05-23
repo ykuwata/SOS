@@ -63,7 +63,7 @@
     NSTimeInterval howRecent = [loc.timestamp timeIntervalSinceNow];
     labelRecent.text = [NSString stringWithFormat: @"%.1f sec ago", -howRecent];
     
-    if (nil) {
+    if (nil) { // @todo
         labelFailCount.text = [NSString stringWithFormat: @"%d", ++failCount];
         return;
     }    

@@ -45,6 +45,9 @@
 @synthesize audioPlayer;
 @synthesize preventSleepTimer;
 
+#define NSLog(s,...) NSLog(@"%s:%d %@",__PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:(s), ##__VA_ARGS__])
+
+
 - (id)init
 {
     if ((self = [super init])) {
@@ -89,7 +92,7 @@
                                                       userInfo:nil
                                                        repeats:YES];
     //@todo 10 sec?
-    
+
 	// We add this timer to the current run loop
 	NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
 	[runLoop addTimer:self.preventSleepTimer forMode:NSDefaultRunLoopMode];

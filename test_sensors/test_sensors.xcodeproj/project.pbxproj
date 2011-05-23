@@ -11,6 +11,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		245145A6138A389B00B47979 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 245145A5138A389B00B47979 /* Icon.png */; };
+		245145C8138A3EF100B47979 /* MMPDeepSleepPreventer.m in Sources */ = {isa = PBXBuildFile; fileRef = 245145C7138A3EF100B47979 /* MMPDeepSleepPreventer.m */; };
 		24CD1A3B137752C200C60BB9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CD1A3A137752C200C60BB9 /* CoreLocation.framework */; };
 		24CD1A441377550700C60BB9 /* GpsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD1A251377423100C60BB9 /* GpsViewController.m */; };
 		24CD1B1E13776BA900C60BB9 /* AccelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD1B1D13776BA900C60BB9 /* AccelViewController.m */; };
@@ -21,6 +23,7 @@
 		24CF9688137F1988004F82F5 /* DeepSleepPreventer.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CF9686137F1988004F82F5 /* DeepSleepPreventer.m */; };
 		24CF9689137F1988004F82F5 /* noSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 24CF9687137F1988004F82F5 /* noSound.wav */; };
 		24CF96B0137F2562004F82F5 /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CF96AF137F2562004F82F5 /* LogViewController.m */; };
+		24D3CF1D138A1FF5007B6BD3 /* honk.wav in Resources */ = {isa = PBXBuildFile; fileRef = 24D3CF1C138A1FF5007B6BD3 /* honk.wav */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 /* End PBXBuildFile section */
@@ -31,6 +34,9 @@
 		1D3623250D0F684500981E51 /* test_sensorsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = test_sensorsAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* test_sensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test_sensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		245145A5138A389B00B47979 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = icons/Icon.png; sourceTree = "<group>"; };
+		245145C6138A3EF100B47979 /* MMPDeepSleepPreventer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPDeepSleepPreventer.h; path = DeepSleepPreventer/MMPDeepSleepPreventer.h; sourceTree = "<group>"; };
+		245145C7138A3EF100B47979 /* MMPDeepSleepPreventer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDeepSleepPreventer.m; path = DeepSleepPreventer/MMPDeepSleepPreventer.m; sourceTree = "<group>"; };
 		24CD1A241377423100C60BB9 /* GpsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpsViewController.h; sourceTree = "<group>"; };
 		24CD1A251377423100C60BB9 /* GpsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpsViewController.m; sourceTree = "<group>"; };
 		24CD1A3A137752C200C60BB9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -47,6 +53,7 @@
 		24CF9687137F1988004F82F5 /* noSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = noSound.wav; path = DeepSleepPreventer/noSound.wav; sourceTree = "<group>"; };
 		24CF96AE137F2562004F82F5 /* LogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogViewController.h; sourceTree = "<group>"; };
 		24CF96AF137F2562004F82F5 /* LogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogViewController.m; sourceTree = "<group>"; };
+		24D3CF1C138A1FF5007B6BD3 /* honk.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = honk.wav; path = DeepSleepPreventer/honk.wav; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +108,9 @@
 		24CF9684137F18F9004F82F5 /* DeepSleepPreventer */ = {
 			isa = PBXGroup;
 			children = (
+				245145C6138A3EF100B47979 /* MMPDeepSleepPreventer.h */,
+				245145C7138A3EF100B47979 /* MMPDeepSleepPreventer.m */,
+				24D3CF1C138A1FF5007B6BD3 /* honk.wav */,
 				24CF9685137F1988004F82F5 /* DeepSleepPreventer.h */,
 				24CF9686137F1988004F82F5 /* DeepSleepPreventer.m */,
 				24CF9687137F1988004F82F5 /* noSound.wav */,
@@ -133,6 +143,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				245145A5138A389B00B47979 /* Icon.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* test_sensors-Info.plist */,
 			);
@@ -203,6 +214,8 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				24CF9689137F1988004F82F5 /* noSound.wav in Resources */,
+				24D3CF1D138A1FF5007B6BD3 /* honk.wav in Resources */,
+				245145A6138A389B00B47979 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +234,7 @@
 				24CF956A137E459B004F82F5 /* Logger.m in Sources */,
 				24CF9688137F1988004F82F5 /* DeepSleepPreventer.m in Sources */,
 				24CF96B0137F2562004F82F5 /* LogViewController.m in Sources */,
+				245145C8138A3EF100B47979 /* MMPDeepSleepPreventer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@
 @class CameraViewController;
 @class LogViewController;
 @class Logger;
-@class DeepSleepPreventer;
+@class MMPDeepSleepPreventer;
 
 @interface test_sensorsAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
@@ -32,7 +32,7 @@
     IBOutlet LogViewController *logViewController;
         
     /// Keep the app running in background
-    DeepSleepPreventer *deepSleepPreventer;
+    MMPDeepSleepPreventer *deepSleepPreventer;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -41,7 +41,7 @@
 @property (nonatomic, retain) IBOutlet AccelViewController *accelViewController;
 @property (nonatomic, retain) IBOutlet CameraViewController *cameraViewController;
 @property (nonatomic, retain) IBOutlet LogViewController *logViewController;
-@property (nonatomic, retain) DeepSleepPreventer *deepSleepPreventer;
+@property (nonatomic, retain) MMPDeepSleepPreventer *deepSleepPreventer;
 
 @end
 
