@@ -73,7 +73,7 @@
 	[self mmp_setUpAudioSession];
 	
 	// Set up path to sound file
-	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"MMPSilence"
+	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"honk"  // "noSound"
 															  ofType:@"wav"];
 	
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
@@ -87,7 +87,7 @@
 	
 	// You may want to set this to 0.0 even if your sound file is silent.
 	// I don't know exactly, if this affects battery life, but it can't hurt.
-	[self.audioPlayer setVolume:0.0];
+	[self.audioPlayer setVolume:0.1];
 	
     return self;
 }

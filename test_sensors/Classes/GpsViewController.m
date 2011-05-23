@@ -63,12 +63,14 @@
     NSTimeInterval howRecent = [loc.timestamp timeIntervalSinceNow];
     labelRecent.text = [NSString stringWithFormat: @"%.1f sec ago", -howRecent];
     
-    if (nil) { // @todo
+    if (howRecent < -[timer timeInterval]) { 
         labelFailCount.text = [NSString stringWithFormat: @"%d", ++failCount];
         return;
-    }    
-    labelSuccessCount.text = [NSString stringWithFormat: @"%d", ++successCount];
-    
+    }
+    else {
+        labelSuccessCount.text = [NSString stringWithFormat: @"%d", ++successCount];
+    }
+
     // Setting date format    
     NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 	[dateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss Z"];
